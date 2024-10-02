@@ -1,0 +1,1 @@
+CREATE TABLE youtube AS ( SELECT * FROM read_csv_auto('data/social media influencers-YOUTUBE - --DEC 2022.csv'));
