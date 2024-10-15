@@ -24,4 +24,23 @@ class ContentKPI:
 
 # create more KPIs here
 class DeviceKPI:
-    pass 
+    def __init__(self) -> None:
+        self._content = QueryDatabase("SELECT * FROM marts.sub_vs_not_sub;").df
+    
+    def display_subs(self):
+        df = self._content
+        st.markdown("## KPIer för videor")
+        st.markdown("Nedan visas KPIer för totalt antal")
+
+        kpis = {
+            "datum": len(df),
+            "Prenumererar": df["Prenumererar"].sum(),
+            "Prenumererar_inte": df["Prenumererar_inte"].sum(),
+            
+        }
+
+        for col, kpi in zip(st.columns(len(kpis)), kpis):
+            with col: 
+                st.metric(kpi, round(kpis[kpi]))
+        st.dataframe(df)
+    

@@ -12,5 +12,19 @@ class ViewsTrend:
         st.markdown("## Antal visningar under senaste månaden")
         st.plotly_chart(fig)
 
+
+class SubsTrend:
+    def __init__(self) -> None:
+        self.df = QueryDatabase("SELECT * FROM marts.sub_vs_not_sub").df
+        print(self.df)
+    def display_sub_trend(self):
+        fig = px.line(self.df, 
+                   x="Datum", 
+                   y=["Prenumererar", "Prenumererar_inte"],  # Use a list for multiple y values
+                   labels={"value": "Antal prenumerationer", "variable": "Prenumerationsstatus"},  # Label customization
+                   title="Antal prenumeranter per dag vs inte prenumeranter")  # Add a title for the plot
+    
+        st.markdown("## Antal prenumeranter per dag vs inte prenumeranter")
+        st.plotly_chart(fig)
 # create more graphs here
 
