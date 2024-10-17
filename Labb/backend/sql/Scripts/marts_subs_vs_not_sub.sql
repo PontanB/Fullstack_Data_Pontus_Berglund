@@ -22,3 +22,5 @@ GROUP BY
 
 -- First it creates a table showing per date how many of the watchers are subs or not and then 
 -- adds watching time from another table.
+
+SELECT table_schema, table_name FROM information_schema.tables WHERE table_schema = 'marts';

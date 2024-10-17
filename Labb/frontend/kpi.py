@@ -29,8 +29,8 @@ class DeviceKPI:
     
     def display_subs(self):
         df = self._content
-        st.markdown("## KPIer för videor")
-        st.markdown("Nedan visas KPIer för totalt antal")
+        st.markdown("## Hur många av visnigarna är premunuranter ")
+        
 
         kpis = {
             "datum": len(df),
